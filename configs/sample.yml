@@ -1,5 +1,5 @@
 # Globals
-name: Forecast              # Used as the title of the charts.
+name: Forecast              # Used as the chart title.
 
 # Accounts
 account:
@@ -10,7 +10,7 @@ account:
     initial_balance: 10000
     interest_rate: 8
 
-# Incomes.
+# Incomes
 income:
   - id: career              # Use any names you like.
     amount: 4500            # Your monthly earnings.
@@ -20,7 +20,7 @@ income:
     amount: 250
     fluctuate: 25           # Randomize the amount between 75% to 125%.
 
-# Expenses.
+# Expenses
 expense:
   - id: household
     amount: 3500            # Your monthly expense.
