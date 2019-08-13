@@ -1,0 +1,27 @@
+# Globals
+name: Forecast        # Used as the title of the charts.
+
+# Accounts
+account:
+  - id: default             # There must be at least one 'default' account.
+    initial_balance: 1000   # Meaning, $1,000
+    interest_rate: 1.025    # Meaning, 1.025%
+  - id: investment
+    initial_balance: 10000
+    interest_rate: 8
+
+# Incomes.
+income:
+  - id: career              # Use any names you like.
+    amount: 4500            # Your monthly earnings.
+    allocate:
+      investment: 15        # Allocate 15% to the 'investment' account.
+  - id: hustle
+    amount: 250
+    fluctuate: 25           # Randomize the amount between 75% to 125%.
+
+# Expenses.
+expense:
+  - id: household
+    amount: 3500            # Your monthly expense.
+    fluctuate: 40           # Randomize the amount between 60% to 140%.
