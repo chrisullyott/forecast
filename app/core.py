@@ -57,9 +57,11 @@ class Forecast:
         return title
 
     def get_description(self):
-        income = '$' + str(self.get_total_income())
-        expense = '$' + str(abs(self.get_total_expense()))
-        return income + ' in income, ' + expense + ' in expenses monthly'
+        i = len(self.incomes)
+        i_str = str(i) + ' incomes' if i > 1 else str(i) + ' income'
+        e = len(self.expenses)
+        e_str = str(e) + ' expenses' if e > 1 else str(e) + ' expense'
+        return i_str + ', ' + e_str
 
     def get_total_income(self):
         total = 0
