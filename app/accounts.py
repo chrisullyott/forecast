@@ -17,11 +17,11 @@ class Account:
         return '${:,.2f}'.format(number)
 
     def get_principal(self, usd=False):
-        return self.format_usd(self.principal) if usd else self.principal
+        return self.format_usd(self.principal) if usd else round(self.principal,2)
 
     def get_interest(self, usd=False):
-        return self.format_usd(self.interest) if usd else self.interest
+        return self.format_usd(self.interest) if usd else round(self.interest,2)
 
     def get_balance(self, usd=False):
         balance = self.principal + self.interest
-        return self.format_usd(balance) if usd else balance
+        return self.format_usd(balance) if usd else round(balance,2)

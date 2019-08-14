@@ -80,10 +80,10 @@ class Forecast:
         return round(total)
 
     def get_net_worth(self):
-        net = 0
+        balances = []
         for a in self.accounts:
-            net += self.accounts[a].get_balance()
-        return net
+            balances.append(self.accounts[a].get_balance())
+        return round(sum(balances),2)
 
     def build_data(self):
         data = {'dates':[], 'net_balance':[], 'balances':{}}
