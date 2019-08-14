@@ -96,7 +96,7 @@ class Forecast:
             for c in self.get_controls():
                 self.run_control(c, i)
             for a in self.accounts:
-                balance = self.accounts[a].get_balance(True)
+                balance = self.accounts[a].get_balance()
                 if a not in data['balances']:
                     data['balances'][a] = []
                 data['balances'][a].append(balance)
