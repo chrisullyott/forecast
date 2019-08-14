@@ -12,5 +12,6 @@ args = parser.parse_args()
 directory = os.path.join('.', 'configs')
 for filename in os.listdir(directory):
     filepath = os.path.join(directory, filename)
-    forecast = Forecast(filepath, args.years, args.auto_open)
-    forecast.project()
+    forecast = Forecast(filepath, args.years).project()
+    PlotBuilder(forecast).build(args.auto_open)
+    CsvBuilder(forecast).build()

@@ -1,6 +1,5 @@
 import os
 import yaml
-import plotly.graph_objects as go
 from .factory import *
 from .helpers import *
 
@@ -10,15 +9,14 @@ class Forecast:
     incomes = {}
     expenses = {}
 
-    def __init__(self, config_path, years=1, auto_open=False):
+    def __init__(self, config_path, years=1):
+        self.data = []
         self.config_path = config_path
         with open(config_path, 'r') as file:
             self.config = yaml.load(file, Loader=yaml.BaseLoader)
         self.years = years
-        self.auto_open = auto_open
         self.id = os.path.basename(config_path).split('.')[0]
         self.name = self.config.get('name', 'My forecast')
-        self.create_objects()
 
     def create_objects(self):
         account_factory = Factory('account')
@@ -52,7 +50,7 @@ class Forecast:
             controls.append(self.expenses[e])
         return controls
 
-    def run_control(self, control, iteration):
+    def run_control(self, control):
         amounts = control.get_allocated_amounts()
         for a in amounts:
             self.accounts[a].add(amounts[a])
@@ -85,49 +83,31 @@ class Forecast:
             balances.append(self.accounts[a].get_balance())
         return round(sum(balances),2)
 
-    def build_data(self):
-        data = {'dates':[], 'net_balance':[], 'balances':{}}
+    def project(self):
+        if self.data:
+            return self
+
+        self.create_objects()
 
         for i in range(0, self.years * 12):
+            # Get date
+            item = {}
             date = date_x_month_begins(i)
-            data['dates'].append(date)
+            item['date'] = date
+
+            # Run controls
             for a in self.accounts:
                 self.accounts[a].compound()
             for c in self.get_controls():
-                self.run_control(c, i)
+                self.run_control(c)
+
+            # Get balances
+            item['balances'] = {}
             for a in self.accounts:
                 balance = self.accounts[a].get_balance()
-                if a not in data['balances']:
-                    data['balances'][a] = []
-                data['balances'][a].append(balance)
+                item['balances'][a] = balance
+            item['balances']['net'] = self.get_net_worth()
+            self.data.append(item)
 
-        return data
+        return self
 
-    def build_plot(self, data):
-        output_dir = os.path.join('.', 'output')
-        if not os.path.exists(output_dir):
-            os.makedirs(output_dir)
-
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(
-            name='net_balance',
-            x=data['dates'],
-            y=data['net_balance']
-        ))
-
-        for a in data['balances']:
-            fig.add_trace(go.Scatter(
-                name=a,
-                x=data['dates'],
-                y=data['balances'][a]
-            ))
-
-        fig.update_layout(title=self.get_title())
-
-        return fig.write_html(
-            os.path.join(output_dir, self.id + '.html'),
-            auto_open=self.auto_open
-        )
-
-    def project(self):
-        return self.build_plot(self.build_data())
