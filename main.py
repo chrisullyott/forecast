@@ -12,6 +12,7 @@ args = parser.parse_args()
 # Build forecasts
 directory = os.path.join('.', 'configs')
 for filename in os.listdir(directory):
+    if filename == 'sample.yml': continue
     filepath = os.path.join(directory, filename)
     forecast = Forecast(filepath, args.years, args.include_net).project()
     PlotBuilder(forecast).build(args.auto_open)
