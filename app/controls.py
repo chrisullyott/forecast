@@ -19,9 +19,9 @@ class Control:
 
     def is_active(self, date):
         active = True
-        if 'first' in self.dates and date < self.dates['first']:
+        if 'start' in self.dates and date < self.dates['start']:
             active = False
-        if 'last' in self.dates and date > self.dates['last']:
+        if 'end' in self.dates and date >= self.dates['end']:
             active = False
         return active
 

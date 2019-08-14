@@ -17,8 +17,8 @@ income:
     allocations:
       investment: 15        # Allocate 15% to the 'investment' account.
     dates:
-      first: 01-2015        # Start on a given month (MM-YYYY)
-      last: 01-2035         # End on a given month (MM-YYYY)
+      start: 01-2015        # Start on a given month (MM-YYYY)
+      end: 01-2025          # End on a given month (MM-YYYY)
   - id: hustle
     amount: 250
     fluctuate: 25           # Randomize the amount between 75% to 125%.
