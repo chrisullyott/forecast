@@ -2,11 +2,7 @@ from .accounts import *
 from .controls import *
 
 class Factory:
-    types = ['account', 'income', 'expense']
-
     def __init__(self, type):
-        if type not in self.types:
-            raise Exception('Invalid factory type')
         self.type = type
 
     def create_account(self, item):
