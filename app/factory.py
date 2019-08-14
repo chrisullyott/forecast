@@ -20,13 +20,16 @@ class Factory:
             item.get('id'),
             item.get('amount', 0),
             item.get('fluctuate', 0),
-            item.get('allocate', {}))
+            item.get('allocate', {}),
+            item.get('dates', {}))
 
     def create_expense(self, item):
         return Expense(
             item.get('id'),
             item.get('amount', 0),
-            item.get('fluctuate', 0))
+            item.get('fluctuate', 0),
+            item.get('allocate', {}),
+            item.get('dates', {}))
 
     def create_instance(self, item):
         return getattr(self, 'create_' + self.type)(item)

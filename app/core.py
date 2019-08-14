@@ -9,7 +9,7 @@ class Forecast:
     incomes = {}
     expenses = {}
 
-    def __init__(self, config_path, years=1):
+    def __init__(self, config_path, years=1, include_net=False):
         self.data = []
         self.config_path = config_path
         with open(config_path, 'r') as file:
@@ -17,6 +17,7 @@ class Forecast:
         self.years = years
         self.id = os.path.basename(config_path).split('.')[0]
         self.name = self.config.get('name', 'My forecast')
+        self.include_net = include_net
 
     def create_objects(self):
         account_factory = Factory('account')
@@ -49,11 +50,6 @@ class Forecast:
         for e in self.expenses:
             controls.append(self.expenses[e])
         return controls
-
-    def run_control(self, control):
-        amounts = control.get_allocated_amounts()
-        for a in amounts:
-            self.accounts[a].add(amounts[a])
 
     def get_title(self):
         title = self.name + ' | ' + str(self.years) + ' years '
@@ -99,7 +95,9 @@ class Forecast:
             for a in self.accounts:
                 self.accounts[a].compound()
             for c in self.get_controls():
-                self.run_control(c)
+                amounts = c.get_allocated_amounts(date)
+                for a in amounts:
+                    self.accounts[a].add(amounts[a])
 
             # Get balances
             item['balances'] = {}
