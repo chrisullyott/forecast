@@ -20,7 +20,7 @@ class Factory:
             item.get('id'),
             item.get('amount', 0),
             item.get('fluctuate', 0),
-            item.get('allocate', {}),
+            item.get('allocations', {}),
             item.get('dates', {}))
 
     def create_expense(self, item):
@@ -28,7 +28,7 @@ class Factory:
             item.get('id'),
             item.get('amount', 0),
             item.get('fluctuate', 0),
-            item.get('allocate', {}),
+            item.get('allocations', {}),
             item.get('dates', {}))
 
     def create_instance(self, item):

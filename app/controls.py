@@ -39,17 +39,17 @@ class Control:
         return amounts
 
 class Income(Control):
-    def __init__(self, id, amount=0, fluctuate=0, allocate={}, dates={}):
+    def __init__(self, id, amount=0, fluctuate=0, allocations={}, dates={}):
         self.id = str(id)
         self.amount = float(amount)
         self.fluctuate = float(fluctuate)/100
-        self.allocations = self.build_allocations(allocate)
+        self.allocations = self.build_allocations(allocations)
         self.dates = self.parse_dates(dates)
 
 class Expense(Control):
-    def __init__(self, id, amount=0, fluctuate=0, allocate={}, dates={}):
+    def __init__(self, id, amount=0, fluctuate=0, allocations={}, dates={}):
         self.id = str(id)
         self.amount = -abs(float(amount))
         self.fluctuate = float(fluctuate)/100
-        self.allocations = self.build_allocations(allocate)
+        self.allocations = self.build_allocations(allocations)
         self.dates = self.parse_dates(dates)

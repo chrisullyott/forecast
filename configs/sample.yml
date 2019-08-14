@@ -14,7 +14,7 @@ account:
 income:
   - id: career              # Use any names you like.
     amount: 4500            # Your monthly earnings.
-    allocate:
+    allocations:
       investment: 15        # Allocate 15% to the 'investment' account.
     dates:
       first: 01-2015        # Start on a given month (MM-YYYY)
