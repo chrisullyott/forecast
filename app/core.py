@@ -53,7 +53,8 @@ class Forecast:
 
     def get_title(self):
         title = self.name + ' | ' + str(self.years) + ' years '
-        title += '(' + self.config['description'] + ')'
+        if 'description' in self.config and self.config['description']:
+            title += '(' + self.config['description'] + ')'
         return title
 
     def get_total_income(self):
