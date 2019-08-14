@@ -1,5 +1,6 @@
 # Globals
 name: Forecast              # Used as the chart title.
+description: "Oh hey!"      # Added to the title.
 
 # Accounts
 account:
