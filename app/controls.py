@@ -15,8 +15,8 @@ class Control:
         amounts = {}
         total = self.amount
         if self.fluctuate:
-            floor = (1 - self.fluctuate)
-            ceil = (1 + self.fluctuate)
+            floor = 1 - self.fluctuate
+            ceil = 1 + self.fluctuate
             total = self.amount * random.uniform(floor, ceil)
         for a in self.allocations:
             amounts[a] = round(total * self.allocations[a], 2)
