@@ -52,9 +52,10 @@ class Forecast:
         return controls
 
     def get_title(self):
-        title = self.name + ' | ' + str(self.years) + ' years '
+        title = self.name + ' | ' + str(self.years)
+        title += ' years' if self.years > 1 else ' year'
         if 'description' in self.config and self.config['description']:
-            title += '(' + self.config['description'] + ')'
+            title += ' (' + self.config['description'] + ')'
         return title
 
     def get_total_income(self):
