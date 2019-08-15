@@ -100,10 +100,8 @@ class Forecast:
             for a in self.accounts:
                 balance = self.accounts[a].get_balance()
                 item['balances'][a] = balance
-
             if self.include_net:
                 item['balances']['net'] = self.get_net_worth()
-
             self.data.append(item)
 
         return self
