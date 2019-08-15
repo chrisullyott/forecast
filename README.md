@@ -21,5 +21,5 @@ Each YAML file in `configs` is a snapshot of a hypothetical, monthly financial p
 Forecast will build a chart and a CSV for each configuration (except sample.yml) and place these in the `output` directory.
 
 ```
-$ python main.py <years> --auto-open
+$ python main.py <years> --auto-open --include-net
 ```
