@@ -1,4 +1,3 @@
-import random
 from .helpers import *
 
 class Control:
@@ -29,11 +28,7 @@ class Control:
         amounts = {a:0 for a in self.allocations}
         if not self.is_active(date):
             return amounts
-        total = self.amount
-        if self.fluctuate:
-            floor = 1 - self.fluctuate
-            ceil = 1 + self.fluctuate
-            total = self.amount * random.uniform(floor, ceil)
+        total = fluctuate_amount(self.amount, self.fluctuate)
         for a in self.allocations:
             amounts[a] = round(total * self.allocations[a], 2)
         return amounts
