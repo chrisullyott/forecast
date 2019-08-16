@@ -34,7 +34,7 @@ class Income(Control):
         self.amount = float(amount)
         self.fluctuate = float(fluctuate)/100
         self.allocations = self.build_allocations(allocations)
-        self.dates = {parse_date(dates[d]) for d in dates}
+        self.dates = {d: parse_date(dates[d]) for d in dates}
 
 class Expense(Control):
     def __init__(self, id, amount=0, fluctuate=0, allocations={}, dates={}):
@@ -42,4 +42,4 @@ class Expense(Control):
         self.amount = -abs(float(amount))
         self.fluctuate = float(fluctuate)/100
         self.allocations = self.build_allocations(allocations)
-        self.dates = {parse_date(dates[d]) for d in dates}
+        self.dates = {d: parse_date(dates[d]) for d in dates}
