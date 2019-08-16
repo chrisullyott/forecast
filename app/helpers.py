@@ -21,6 +21,13 @@ def parse_date(date):
 def date_this_month_began():
     return date.today().replace(day=1)
 
+def date_this_year_began():
+    return date.today().replace(day=1, month=1)
+
 def date_x_month_begins(months):
     delta = relativedelta.relativedelta(months=months)
     return (date_this_month_began() + delta).replace(day=1)
+
+def date_x_year_begins(years):
+    delta = relativedelta.relativedelta(years=years)
+    return (date_this_year_began() + delta).replace(day=1, month=1)

@@ -73,27 +73,32 @@ class Forecast:
             balances.append(self.accounts[a].get_balance())
         return round(sum(balances),2)
 
+    def get_iterations_per_year(self):
+        n = 12 if self.config['mode'] == 'monthly' else 1
+        return n
+
+    def get_iteration_count(self):
+        return (self.years * self.get_iterations_per_year()) + 1
+
+    def get_iteration_date(self, i):
+        if self.config['mode'] == 'monthly':
+            return date_x_month_begins(i)
+        return date_x_year_begins(i)
+
     def project(self):
         if self.data:
             return self
 
         self.create_objects()
+        n = self.get_iterations_per_year()
+        c = self.get_iteration_count()
 
-        for i in range(0, self.years * 12):
-            # Get date
+        for i in range(0, c):
             item = {}
-            date = date_x_month_begins(i)
+            date = self.get_iteration_date(i)
             item['date'] = date
 
-            # Run controls
-            for a in self.accounts:
-                self.accounts[a].compound()
-            for c in self.get_controls():
-                amounts = c.get_allocated_amounts(date)
-                for a in amounts:
-                    self.accounts[a].add(amounts[a])
-
-            # Get balances
+            # Add the current balance
             item['balances'] = {}
             for a in self.accounts:
                 balance = self.accounts[a].get_balance()
@@ -101,6 +106,16 @@ class Forecast:
             if self.include_net:
                 item['balances']['net'] = self.get_net_worth()
             self.data.append(item)
+
+            # Compound existing funds
+            for a in self.accounts:
+                self.accounts[a].compound(n)
+
+            # Debit/credit accounts
+            for c in self.get_controls():
+                amounts = c.get_allocated_amounts(date)
+                for a in amounts:
+                    self.accounts[a].add(amounts[a])
 
         return self
 

@@ -9,7 +9,7 @@ class Factory:
         return Account(
             item.get('id'),
             item.get('initial_balance', 0),
-            item.get('interest_rate', 0))
+            item.get('annual_return', 0))
 
     def create_income(self, item):
         return Income(

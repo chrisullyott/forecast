@@ -1,16 +1,17 @@
 class Account:
-    def __init__(self, id, initial_balance, interest_rate):
+    def __init__(self, id, initial_balance, annual_return):
         self.id = str(id)
         self.principal = float(initial_balance)
         self.interest = 0
-        self.interest_rate = round(float(interest_rate)/100,10)
+        self.annual_return = round(float(annual_return)/100,10)
 
     def add(self, amount):
         self.principal += amount
         return self
 
-    def compound(self):
-        self.interest += self.get_balance() * (self.interest_rate/12)
+    def compound(self, per_year):
+        interest_rate = self.annual_return / per_year
+        self.interest += self.get_balance() * (interest_rate)
         return self
 
     def get_principal(self):

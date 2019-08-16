@@ -1,25 +1,26 @@
 # Globals
 name: Forecast              # Used as the chart title.
 description: "Oh hey!"      # Added to the title.
+mode: monthly               # 'monthly' or 'yearly'
 
 # Accounts
 account:
   - id: default             # There must be at least one 'default' account.
     initial_balance: 1000   # Meaning, $1,000
-    interest_rate: 1.025    # Meaning, 1.025%
+    annual_return: 1.025    # Meaning, 1.025%
   - id: investment
     initial_balance: 10000
-    interest_rate: 8
+    annual_return: 8
 
 # Incomes
 income:
   - id: career              # Use any names you like.
-    amount: 4500            # Your monthly earnings.
+    amount: 4500            # Your earnings (monthly or yearly).
     allocations:
       investment: 15        # Allocate 15% to the 'investment' account.
     dates:
-      start: 01-2015        # Start on a given month (MM-YYYY)
-      end: 01-2025          # End on a given month (MM-YYYY)
+      start: 01-2015        # Start on a given month (MM-YYYY) or year (YYYY).
+      end: 01-2025          # End on a given month (MM-YYYY) or year (YYYY).
   - id: hustle
     amount: 250
     fluctuate: 25           # Randomize the amount between 75% to 125%.
@@ -27,5 +28,5 @@ income:
 # Expenses
 expense:
   - id: household
-    amount: 3500            # Your monthly expense.
+    amount: 3500            # Your expense (monthly or yearly).
     fluctuate: 40           # Randomize the amount between 60% to 140%.
