@@ -1,11 +1,6 @@
 from .helpers import *
 
 class Control:
-    def parse_dates(self, dates={}):
-        for d in dates:
-            dates[d] = parse_date(dates[d])
-        return dates
-
     def build_allocations(self, data={}):
         allocations = {'default': 1}
         if 'default' in data:
@@ -39,7 +34,7 @@ class Income(Control):
         self.amount = float(amount)
         self.fluctuate = float(fluctuate)/100
         self.allocations = self.build_allocations(allocations)
-        self.dates = self.parse_dates(dates)
+        self.dates = {parse_date(dates[d]) for d in dates}
 
 class Expense(Control):
     def __init__(self, id, amount=0, fluctuate=0, allocations={}, dates={}):
@@ -47,4 +42,4 @@ class Expense(Control):
         self.amount = -abs(float(amount))
         self.fluctuate = float(fluctuate)/100
         self.allocations = self.build_allocations(allocations)
-        self.dates = self.parse_dates(dates)
+        self.dates = {parse_date(dates[d]) for d in dates}
