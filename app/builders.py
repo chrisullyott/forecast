@@ -56,8 +56,9 @@ class PlotBuilder(Builder):
                 balances[a].append(item['balances'][a])
 
         fig = go.Figure()
+        mode = 'lines+markers' if self.forecast.years < 4 else 'lines'
         for a in balances:
-            fig.add_trace(go.Scatter(name=a, x=dates, y=balances[a]))
+            fig.add_trace(go.Scatter(name=a, mode=mode, x=dates, y=balances[a]))
         fig.update_layout(title=self.forecast.get_title())
 
         filename = self.forecast.id + '.html'
