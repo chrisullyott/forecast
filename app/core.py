@@ -3,13 +3,11 @@ from .factory import *
 from .helpers import *
 
 class Forecast:
-    config = {}
-    accounts = {}
-    incomes = {}
-    expenses = {}
-
     def __init__(self, config_path, years=1, include_net=False):
         self.data = []
+        self.accounts = {}
+        self.incomes = {}
+        self.expenses = {}
         self.id = os.path.basename(config_path).split('.')[0]
         self.config = read_yaml(config_path)
         self.name = self.config.get('name', 'My forecast')
@@ -21,8 +19,10 @@ class Forecast:
         income_factory = Factory('income')
         expense_factory = Factory('expense')
         self.add_accounts(account_factory.create(self.config['account']))
-        self.add_incomes(income_factory.create(self.config['income']))
-        self.add_expenses(expense_factory.create(self.config['expense']))
+        if 'income' in self.config:
+            self.add_incomes(income_factory.create(self.config['income']))
+        if 'expense' in self.config:
+            self.add_expenses(expense_factory.create(self.config['expense']))
         return self
 
     def add_accounts(self, accounts):
