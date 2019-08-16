@@ -13,8 +13,10 @@ def fluctuate_amount(amount, percent):
     ceil = 1 + percent
     return amount * random.uniform(floor, ceil)
 
-def parse_month_string(string):
-    return datetime.strptime(string, '%m-%Y').date()
+def parse_date(date):
+    date = str(date)
+    date = '01-' + date if len(date) == 4 else date
+    return datetime.strptime(date, '%m-%Y').date()
 
 def date_this_month_began():
     return date.today().replace(day=1)

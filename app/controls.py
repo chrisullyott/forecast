@@ -3,7 +3,7 @@ from .helpers import *
 class Control:
     def parse_dates(self, dates={}):
         for d in dates:
-            dates[d] = parse_month_string(dates[d])
+            dates[d] = parse_date(dates[d])
         return dates
 
     def build_allocations(self, data={}):
