@@ -6,4 +6,4 @@ __pycache__/
 # App
 output/
 configs/*
-!configs/sample.yml
+!configs/sample.yaml

@@ -18,7 +18,7 @@ Each YAML file in `configs` is a snapshot of a hypothetical financial profile, a
 
 ### Run
 
-Forecast will build a chart and a CSV for each configuration (except sample.yml) and place these in the `output` directory.
+Forecast will build a chart and a CSV for each configuration (except sample.yaml) and place these in the `output` directory.
 
 ```
 $ python main.py <years> --auto-open --include-net

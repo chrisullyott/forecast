@@ -13,7 +13,7 @@ args = parser.parse_args()
 directory = os.path.join('.', 'configs')
 for filename in os.listdir(directory):
     extension = os.path.splitext(filename)[1][1:]
-    if extension != 'yml' or filename == 'sample.yml': continue
+    if extension not in ['yml', 'yaml'] or filename == 'sample.yaml': continue
     filepath = os.path.join(directory, filename)
     forecast = Forecast(filepath, args.years, args.include_net).project()
     PlotBuilder(forecast).build(args.auto_open)
