@@ -1,8 +1,8 @@
-import yaml
 import random
 from datetime import date
 from datetime import datetime
 from dateutil import relativedelta
+import yaml
 
 def read_yaml(file_path):
     with open(file_path, 'r') as file:
