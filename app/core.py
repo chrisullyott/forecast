@@ -1,4 +1,5 @@
 import os
+import yaml
 from .factory import *
 from .helpers import *
 
@@ -9,10 +10,14 @@ class Forecast:
         self.incomes = {}
         self.expenses = {}
         self.id = os.path.basename(config_path).split('.')[0]
-        self.config = read_yaml(config_path)
+        self.config = self.read_yaml(config_path)
         self.name = self.config.get('name', 'My forecast')
         self.years = years
         self.include_net = include_net
+
+    def read_yaml(self, file_path):
+        with open(file_path, 'r') as file:
+            return yaml.load(file, Loader=yaml.BaseLoader)
 
     def create_objects(self):
         account_factory = Factory('account')
