@@ -5,28 +5,28 @@ mode: monthly               # 'monthly' or 'yearly'
 
 # Accounts
 account:
-  - id: default             # There must be at least one 'default' account.
+  - name: default           # There must be at least one 'default' account.
     initial_balance: 1000   # Meaning, $1,000
     annual_return: 1.025    # Meaning, 1.025%
-  - id: investment
+  - name: investment
     initial_balance: 10000
     annual_return: 8
 
 # Incomes
 income:
-  - id: career              # Use any names you like.
+  - name: career            # Use any names you like.
     amount: 4500            # Your earnings (monthly or yearly).
     allocations:
       investment: 15        # Allocate 15% to the 'investment' account.
     dates:
       start: 01-2015        # Start on a given month (MM-YYYY) or year (YYYY).
       end: 01-2025          # End on a given month (MM-YYYY) or year (YYYY).
-  - id: hustle
+  - name: hustle
     amount: 250
     fluctuate: 25           # Randomize the amount between 75% to 125%.
 
 # Expenses
 expense:
-  - id: household
+  - name: household
     amount: 3500            # Your expense (monthly or yearly).
     fluctuate: 40           # Randomize the amount between 60% to 140%.
