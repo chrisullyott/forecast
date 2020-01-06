@@ -1,6 +1,10 @@
 from .helpers import fluctuate_amount, parse_date
 
 class Control:
+    '''
+    Implements controls which act on accounts. Incomes and Expenses can change the
+    balance of an Account.
+    '''
     def build_allocations(self, data=None):
         if data is None:
             data = {}

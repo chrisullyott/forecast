@@ -2,6 +2,9 @@ from .accounts import Account
 from .controls import Income, Expense
 
 class Factory:
+    '''
+    Implements a factory which is able to generate objects from dictionaries of data.
+    '''
     def __init__(self, type):
         self.type = type
 

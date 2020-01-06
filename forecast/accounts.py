@@ -1,4 +1,8 @@
 class Account:
+    '''
+    Implements a container of funds where an initial balance and annual ROI
+    can be defined.
+    '''
     def __init__(self, id, initial_balance, annual_return):
         self.id = str(id)
         self.principal = float(initial_balance)

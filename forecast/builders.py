@@ -3,6 +3,12 @@ import csv
 import plotly.graph_objects as go
 
 class Builder:
+    '''
+    Generates forecast output. Can take several forms, like a spreadsheet or a graph.
+
+    Variables:
+        output_dir {str} -- The directory to place static files.
+    '''
     output_dir = 'output'
 
     def create_file_dir(self, path):

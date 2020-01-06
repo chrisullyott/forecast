@@ -4,6 +4,9 @@ from .factory import Factory
 from .helpers import parse_date, date_x_month_begins
 
 class Forecast:
+    '''
+    The core class for Forecast. Define process settings and kick off the process.
+    '''
     def __init__(self, config_path, years=1, include_net=False):
         self.data = []
         self.accounts = {}
