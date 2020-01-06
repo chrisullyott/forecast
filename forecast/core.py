@@ -12,7 +12,7 @@ class Forecast:
         self.accounts = {}
         self.incomes = {}
         self.expenses = {}
-        self.id = os.path.basename(config_path).split('.')[0]
+        self.name = os.path.basename(config_path).split('.')[0]
         self.config = self.read_yaml(config_path)
         self.name = self.config.get('name', 'My forecast')
         self.years = years
@@ -35,17 +35,17 @@ class Forecast:
 
     def add_accounts(self, accounts):
         for a in accounts:
-            self.accounts[a.id] = a
+            self.accounts[a.name] = a
         return self
 
     def add_incomes(self, incomes):
         for i in incomes:
-            self.incomes[i.id] = i
+            self.incomes[i.name] = i
         return self
 
     def add_expenses(self, expenses):
         for e in expenses:
-            self.expenses[e.id] = e
+            self.expenses[e.name] = e
         return self
 
     def get_controls(self):

@@ -41,24 +41,24 @@ class Control:
         return amount * random.uniform(floor, ceil)
 
 class Income(Control):
-    def __init__(self, id, amount=0, fluctuate=0, allocations=None, dates=None):
+    def __init__(self, name, amount=0, fluctuate=0, allocations=None, dates=None):
         if allocations is None:
             allocations = {}
         if dates is None:
             dates = {}
-        self.id = str(id)
+        self.name = str(name)
         self.amount = float(amount)
         self.fluctuate = float(fluctuate)/100
         self.allocations = self.build_allocations(allocations)
         self.dates = {d: parse_date(dates[d]) for d in dates}
 
 class Expense(Control):
-    def __init__(self, id, amount=0, fluctuate=0, allocations=None, dates=None):
+    def __init__(self, name, amount=0, fluctuate=0, allocations=None, dates=None):
         if allocations is None:
             allocations = {}
         if dates is None:
             dates = {}
-        self.id = str(id)
+        self.name = str(name)
         self.amount = -abs(float(amount))
         self.fluctuate = float(fluctuate)/100
         self.allocations = self.build_allocations(allocations)

@@ -34,7 +34,7 @@ class CsvBuilder(Builder):
         return rows
 
     def build(self):
-        filename = self.forecast.id + '.csv'
+        filename = self.forecast.name + '.csv'
         filepath = os.path.join('.', self.output_dir, filename)
         self.create_file_dir(filepath)
 
@@ -67,7 +67,7 @@ class PlotBuilder(Builder):
             fig.add_trace(go.Scatter(name=a, mode=mode, x=dates, y=balances[a]))
         fig.update_layout(title=self.forecast.get_title())
 
-        filename = self.forecast.id + '.html'
+        filename = self.forecast.name + '.html'
         filepath = os.path.join('.', self.output_dir, filename)
         self.create_file_dir(filepath)
 
