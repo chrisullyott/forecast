@@ -1,7 +1,7 @@
 import os
 import yaml
 from .factory import Factory
-from .helpers import date_x_month_begins
+from .helpers import date_x_month_begins, date_x_year_begins
 
 class Forecast:
     '''
