@@ -1,6 +1,6 @@
 import os
 import argparse
-import app as fc
+import forecast as fc
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Forecast command line')
