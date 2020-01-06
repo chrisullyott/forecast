@@ -42,10 +42,6 @@ class Control:
 
 class Income(Control):
     def __init__(self, name, amount=0, fluctuate=0, allocations=None, dates=None):
-        if allocations is None:
-            allocations = {}
-        if dates is None:
-            dates = {}
         self.name = str(name)
         self.amount = float(amount)
         self.fluctuate = float(fluctuate)/100
@@ -54,10 +50,6 @@ class Income(Control):
 
 class Expense(Control):
     def __init__(self, name, amount=0, fluctuate=0, allocations=None, dates=None):
-        if allocations is None:
-            allocations = {}
-        if dates is None:
-            dates = {}
         self.name = str(name)
         self.amount = -abs(float(amount))
         self.fluctuate = float(fluctuate)/100
