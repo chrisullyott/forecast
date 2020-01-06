@@ -16,7 +16,7 @@ class Forecast:
         self.accounts = {}
         self.incomes = {}
         self.expenses = {}
-        self.name = os.path.basename(config_path).split('.')[0]
+        self.filename = os.path.basename(config_path).split('.')[0]
         self.config = read_yaml(config_path)
         self.name = self.config.get('name', 'My forecast')
         self.years = years
