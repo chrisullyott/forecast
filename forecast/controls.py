@@ -1,4 +1,5 @@
-from .helpers import fluctuate_amount, parse_date
+from .helpers import parse_date
+import random
 
 class Control:
     '''
@@ -29,10 +30,15 @@ class Control:
         amounts = {a:0 for a in self.allocations}
         if not self.is_active(date):
             return amounts
-        total = fluctuate_amount(self.amount, self.fluctuate)
+        total = self.fluctuate_amount(self.amount, self.fluctuate)
         for a in self.allocations:
             amounts[a] = round(total * self.allocations[a], 2)
         return amounts
+
+    def fluctuate_amount(self, amount, percent):
+        floor = 1 - percent
+        ceil = 1 + percent
+        return amount * random.uniform(floor, ceil)
 
 class Income(Control):
     def __init__(self, id, amount=0, fluctuate=0, allocations=None, dates=None):

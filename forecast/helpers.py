@@ -1,11 +1,5 @@
-import random
 from datetime import date, datetime
 from dateutil import relativedelta
-
-def fluctuate_amount(amount, percent):
-    floor = 1 - percent
-    ceil = 1 + percent
-    return amount * random.uniform(floor, ceil)
 
 def parse_date(date):
     date = str(date)
