@@ -1,5 +1,5 @@
-from .helpers import parse_date
 import random
+from .helpers import parse_date
 
 class Control:
     '''
