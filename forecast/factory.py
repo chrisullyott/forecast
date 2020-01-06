@@ -5,8 +5,8 @@ class Factory:
     '''
     Implements a factory which is able to generate objects from dictionaries of data.
     '''
-    def __init__(self, type):
-        self.type = type
+    def __init__(self, kind):
+        self.kind = kind
 
     def create_account(self, item):
         return Account(
@@ -31,7 +31,7 @@ class Factory:
             item.get('dates', {}))
 
     def create_instance(self, item):
-        return getattr(self, 'create_' + self.type)(item)
+        return getattr(self, 'create_' + self.kind)(item)
 
     def create(self, data):
         objects = []
