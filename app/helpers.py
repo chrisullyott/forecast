@@ -1,6 +1,5 @@
 import random
-from datetime import date
-from datetime import datetime
+from datetime import date, datetime
 from dateutil import relativedelta
 
 def fluctuate_amount(amount, percent):
