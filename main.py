@@ -1,6 +1,6 @@
 import os
 import argparse
-from app import *
+import app as fc
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Forecast command line')
@@ -15,6 +15,6 @@ for filename in os.listdir(directory):
     extension = os.path.splitext(filename)[1][1:]
     if extension not in ['yml', 'yaml'] or filename == 'sample.yaml': continue
     filepath = os.path.join(directory, filename)
-    forecast = Forecast(filepath, args.years, args.include_net).project()
-    PlotBuilder(forecast).build(args.auto_open)
-    CsvBuilder(forecast).build()
+    forecast = fc.Forecast(filepath, args.years, args.include_net).project()
+    fc.PlotBuilder(forecast).build(args.auto_open)
+    fc.CsvBuilder(forecast).build()
