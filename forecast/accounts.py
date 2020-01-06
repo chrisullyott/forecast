@@ -7,7 +7,7 @@ class Account:
         self.id = str(id)
         self.principal = float(initial_balance)
         self.interest = 0
-        self.annual_return = round(float(annual_return)/100,10)
+        self.annual_return = round(float(annual_return)/100, 10)
 
     def add(self, amount):
         self.principal += amount

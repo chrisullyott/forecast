@@ -79,7 +79,7 @@ class Forecast:
         balances = []
         for a in self.accounts:
             balances.append(self.accounts[a].get_balance())
-        return round(sum(balances),2)
+        return round(sum(balances), 2)
 
     def get_iterations_per_year(self):
         n = 12 if self.config['mode'] == 'monthly' else 1
@@ -126,4 +126,3 @@ class Forecast:
                     self.accounts[a].add(amounts[a])
 
         return self
-
