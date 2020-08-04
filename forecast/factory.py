@@ -10,13 +10,13 @@ class Factory:
 
     def create_account(self, item):
         return Account(
-            item.get('name'),
+            item.get('id'),
             item.get('initial_balance', 0),
             item.get('annual_return', 0))
 
     def create_income(self, item):
         return Income(
-            item.get('name'),
+            item.get('id'),
             item.get('amount', 0),
             item.get('fluctuate', 0),
             item.get('allocations', {}),
@@ -24,7 +24,7 @@ class Factory:
 
     def create_expense(self, item):
         return Expense(
-            item.get('name'),
+            item.get('id'),
             item.get('amount', 0),
             item.get('fluctuate', 0),
             item.get('allocations', {}),
