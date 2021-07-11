@@ -38,7 +38,10 @@ class Control:
     def fluctuate_amount(self, amount, percent):
         floor = 1 - percent
         ceil = 1 + percent
-        return amount * random.uniform(floor, ceil)
+        result = amount * random.uniform(floor, ceil)
+        if result > 0:
+            return result
+        return 0
 
 class Income(Control):
     def __init__(self, name, amount=0, fluctuate=0, allocations=None, dates=None):
